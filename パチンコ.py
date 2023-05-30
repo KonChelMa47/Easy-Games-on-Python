@@ -16,17 +16,24 @@ def Kake():
     
     global bet
     
-    bet = int(input("bet数を入力してください"))
     
-    if 50 <= bet <= 100:
+    while True:
+        try:           
+            bet = int(input("bet数を入力してください"))
+            break
+        
+        except ValueError as e:
+            print()
+    
+    if 50 <= bet / coin * 100 <= 100:
         print("やるねー、男やな")
         return True
         
-    elif 20 <= bet <= 49:
+    elif 20 <= bet / coin * 100 <= 49:
         print("男じゃねーな、まあがんばれ")
         return True
         
-    elif 0 <= bet <= 19:
+    elif 0 <= bet / coin * 100 <= 19:
         print("チキンやん、もっとかけろや")
         return True
     
@@ -34,17 +41,15 @@ def Kake():
         print("なんしとん？コイン数ちゃんと読んだ？")
         return False
     
+def Loop():
+    while 1:
+        if Kake() == True:
+            break
     
+        else:
+            pass
 
-
-while 1:
-    if Kake() == True:
-        break
-    
-    else:
-        pass
-    
-
+Loop()
     
 print("------------------------------------------")
 
@@ -52,10 +57,9 @@ print("------------------------------------------")
 
 def Pachinko():
     
-    a = random.randint(1, 7)                                 
-    
-    b = random.randint(1, 7)
-    c = random.randint(1, 7)
+    a = random.randint(1, 2)    
+    b = random.randint(1, 2)
+    c = random.randint(1, 2)
 
     input("スロットスタート！")
     print(a)
@@ -76,14 +80,17 @@ def Pachinko():
         
     else:
         print("You Lose:(")
-        return False    
-
-
-    
+        return False
+  
        
 while 1:
-    if Pachinko()==True:
-        break
+    if Pachinko() == True:
+        coin += bet * 2
+        print("あなたのコイン数は",coin,"です。")
+        print("------------------------------------------")
+        
+        Loop()
+        
     else:
         coin -= bet
         if coin <= 0:
@@ -93,4 +100,5 @@ while 1:
             pass
         print("あなたのコイン数は残り",coin,"です。")
         print("------------------------------------------")
-        Kake()
+        
+        Loop()
