@@ -51,6 +51,7 @@ def Tutorial():
     print("ではさっそくはじめるぞー")
     input()
     print("------------------------------------------")
+    Loop()
 
 def Kake():
     
@@ -112,13 +113,9 @@ def Pachinko():
     print(c)
 
     if a==b==c:
-        print("You Win!!!")
-        print("いいねー！その調子だぞ")
         return True
         
     else:
-        print("Keep Going!")
-        print("おしい！あきらめるな！")
         return False
   
        
@@ -127,26 +124,33 @@ while 1:
         count += 1
         coin += bet * 4
         if count == 5:
+            print("------------------------------------------") 
             print("あなたのコイン数は",coin,"です。")
-            if coin >= 300:
+            print("------------------------------------------")
+            if 300 < coin:
+                print("やられたよ！今度からお前を「むーちょ」と呼ぶ")
+                
+            elif coin >= 300:
                 print(Name,"さん！あなたは真のパチンカスだ！すばらしい")
-                print("あなたのスコアは",coin * 12)
+                
             elif 200 < coin < 300:
                 print("感動したよー",Name,"、お前にはポテンシャルあるぞ")
-                print("あなたのスコアは",coin * 12)
+                
             elif 100 <= coin < 200:
                 print("マイナスにならなかっただけマシや！",Name,"、お前はがんばった")
-                print("あなたのスコアは",coin * 12)
+                
             elif 50 <= coin < 100:
                 print("マイナスじゃーん！はぁー？",Name,"、おめえ向いてないな")
-                print("あなたのスコアは",coin * 12)
+                
             else:
                 print("下手すぎだろ！一生ギャンブルすな！",Name,"!")
-                print("あなたのスコアは",coin * 12)
+            
+            print("You Did It!")
+                
             break
         else:
             pass
-        
+        print("やるねぇ～その調子")
         print("あなたのコイン数は",coin,"です。")
         print("------------------------------------------")
         
@@ -155,10 +159,14 @@ while 1:
     else:
         coin -= bet
         if coin <= 0:
+            print("------------------------------------------")
             print("二度と俺の店に来るな！！働け！！")
+            print("------------------------------------------")
+            print("ゲームオーバー")
             break
         else:
             pass
+        print("おっとっと、外れてるよ～")
         print("あなたのコイン数は残り",coin,"です。")
         print("------------------------------------------")
         
