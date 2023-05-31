@@ -68,13 +68,12 @@ class Player:
             self.on_ground = True
         else:
             self.on_ground = False
-
-        # プレイヤーとブロックの接触判定
+            
         player_rect = self.img.get_rect().move(self.x, self.y)
         for block in blocks:
             block_rect = block.get_rect()
             if player_rect.colliderect(block_rect) and self.velocity >= 0:
-                # プレイヤーがブロックの上に乗っている場合
+                
                 self.y = block.y - self.img.get_height()
                 self.velocity = 0
                 self.on_ground = True
@@ -121,20 +120,17 @@ def main():
         bg2.update()
         player.update(blocks)
 
-        # Draw the backgrounds
+
         bg1.draw(screen)
         bg2.draw(screen)
 
-        # Draw the player
         player.draw(screen)
 
         for block in blocks:
             block.draw(screen)
 
-        # Update the display
         pygame.display.update()
 
-        # Limit the frame rate
         clock.tick(60)
 
 
